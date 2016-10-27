@@ -49,6 +49,27 @@ switch(arrEmployees[3]) {
   employeeBonus[3] = Math.round(arrEmployees[2] * bonus);
   return employeeBonus;
   }
+
+
+
+var statement = "";
+var newArray = [];
 for (var i = 0; i < employees.length; i++) {
-  console.log(bonusCalculation(employees[i]));
+  var statementArray = bonusCalculation(employees[i]);
+  statement = statementArray[0] + "'s" + " bonus % is " + statementArray[1] + "%. Making their annual salary " + statementArray[2] + " including the bonus of "+ statementArray[3] + ".\n";
+  newArray.push(statement);
 }
+
+function makeUL() {
+    var list = document.createElement('ul');
+
+  for(var i = 0; i < newArray.length; i++) {
+    var item = document.createElement('li');
+    var string = String(newArray[i]);
+    item.appendChild(document.createTextNode(string));
+    list.appendChild(item);
+  }
+  return list;
+}
+
+document.getElementById('container').appendChild(makeUL(newArray[0]));
